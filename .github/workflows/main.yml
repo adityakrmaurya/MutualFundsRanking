@@ -4,6 +4,7 @@ on:
   schedule:
     # Runs at midnight UTC on the 3rd of every month
     - cron: '0 0 3 * *'
+  workflow_dispatch:  # enables manual triggering
 
 jobs:
   fetch_and_process:
