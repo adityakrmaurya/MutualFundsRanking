@@ -28,18 +28,8 @@ jobs:
       run: |
         python ranking.py  # Make sure this matches your script filename
 
-    - name: Upload results to release
-      id: upload
-      uses: actions/upload-release-asset@v1
-      with:
-        upload_url: ${{ github.event.release.upload_url }}
-        asset_path: ./mutual_funds_ranking_*.xlsx
-        asset_name: mutual_funds_ranking_${{ github.run_number }}.xlsx
-        asset_content_type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
-        token: ${{ secrets.GITHUB_TOKEN }}
-
     - name: Create a new release
-      uses: softprops/action-gh-release@v1
+      uses: softprops/action-gh-release@v2.0.8
       with:
         files: mutual_funds_ranking_*.xlsx
       env:
