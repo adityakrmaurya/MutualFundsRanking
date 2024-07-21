@@ -32,5 +32,3 @@ jobs:
       uses: softprops/action-gh-release@v2.0.8
       with:
         files: mutual_funds_ranking_*.xlsx
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
