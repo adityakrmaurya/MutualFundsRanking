@@ -259,7 +259,7 @@ def main():
         # Combine DataFrames and save to Excel
         excel_df = pd.concat(category_dataframes_with_total_scores.values())
         now = datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
-        file_name = f"mutual_funds_ranking_{now}.ods"
+        file_name = f"mutual_funds_ranking_{now}.xlsx"
         save_to_excel(excel_df, file_name)
 
     except Exception as e:
