@@ -12,10 +12,10 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4.1.7
 
     - name: Set up Python
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v5.1.1
       with:
         python-version: '3.9'  # Choose the Python version you need
 
@@ -32,3 +32,5 @@ jobs:
       uses: softprops/action-gh-release@v2.0.8
       with:
         files: mutual_funds_ranking_*.xlsx
+        make_latest: true
+        
