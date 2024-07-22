@@ -27,20 +27,11 @@ jobs:
     - name: Run the script
       run: |
         python ranking.py  # Make sure this matches your script filename
-    
-    - name: Create Release Tag
-      id: tag
-      run: |
-        tag_name=v0.0.${{ github.run_number }}
-        git tag -a $tag_name -m "Automated tag for release $tag_name"
-        git push origin $tag_name
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Create a new release
       uses: softprops/action-gh-release@v2.0.8
       with:
         files: mutual_funds_ranking_*.xlsx
-        tag_name: ${{ steps.tag.outputs.tag_name }}
+        tag_name: v0.0.${{ github.run_number }}
         release_name: "Automated release v0.0.${{ github.run_number }}"
         make_latest: true
