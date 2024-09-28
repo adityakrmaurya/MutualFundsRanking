@@ -175,17 +175,21 @@ def calculate_scores(df: pd.DataFrame) -> pd.DataFrame:
 
     def risk_score_by_category(category_df: pd.DataFrame) -> pd.DataFrame:
         category_df.loc[:, "risk_score_max_twenty"] = (
-            category_df["three_years_sharpe"].apply(
-                lambda x: stats.percentileofscore(category_df["three_years_sharpe"], x)
+            100
+            - category_df["three_years_standard_deviation"].apply(
+                lambda x: stats.percentileofscore(
+                    category_df["three_years_standard_deviation"], x
+                )
             )
-            * 0.08
-        )
+        ) * 0.08
         category_df.loc[:, "risk_score_max_twenty"] += (
-            category_df["five_years_sharpe"].apply(
-                lambda x: stats.percentileofscore(category_df["five_years_sharpe"], x)
+            100
+            - category_df["five_years_standard_deviation"].apply(
+                lambda x: stats.percentileofscore(
+                    category_df["five_years_standard_deviation"], x
+                )
             )
-            * 0.12
-        )
+        ) * 0.12
         return category_df
 
     def total_score(category_df: pd.DataFrame) -> pd.DataFrame:
